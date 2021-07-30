@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+  function checkPersonalNumber() {
+    const value = document.getElementById("fname").value;
+
+    if (value.length !== 11) {
+      throw Error("Is not 11 length.")
+    }
+
+    return true;
+  }
+
+  function onCheck() {
+    try {
+      checkPersonalNumber()
+
+      document.getElementById("validation-true").innerHTML = "სწორია!";
+      document.getElementById("validation-wrong").innerHTML = "";
+    } catch (e) {
+      console.log(11)
+      document.getElementById("validation-true").innerHTML = "";
+      document.getElementById("validation-wrong").innerHTML = "არასწორია!";
+    }
+  }
+</script>
+
+<form onsubmit="return checkPersonalNumber()">
+  <label for="fname">Personal Number</label><br>
+  <input id="fname"><br>
+  <div style="color: green;" id="validation-true"></div>
+  <div style="color: red;" id="validation-wrong"></div>
+  <input type="button" value="შემოწმება" onclick="onCheck()">
+</form>
+
+</body>
+</html>
