@@ -2,6 +2,41 @@
 <html>
 <body>
 
+<script>
+  function checkPersonalNumber() {
+    const value = document.getElementById("fname").value;
+
+    if (value.length !== 11) {
+      throw Error("Is not 11 length.")
+    }
+
+    return true;
+  }
+
+  function onCheck() {
+    try {
+      checkPersonalNumber()
+
+      document.getElementById("validation-true").innerHTML = "სწორია!";
+      document.getElementById("validation-wrong").innerHTML = "";
+    } catch (e) {
+      console.log(11)
+      document.getElementById("validation-true").innerHTML = "";
+      document.getElementById("validation-wrong").innerHTML = "არასწორია!";
+    }
+  }
+</script>
+
+<form onsubmit="return checkPersonalNumber()">
+  <label for="fname">Personal Number</label><br>
+  <input id="fname"><br>
+  <div style="color: green;" id="validation-true"></div>
+  <div style="color: red;" id="validation-wrong"></div>
+  <input type="button" value="შემოწმება" onclick="onCheck()">
+</form>
+
+<div style="border: 1px solid black; width: 100%; margin: 100px 20px;"></div>
+
 <div id="parent" style="border-radius: 40%; background: black; padding: 50px; margin: 50px; display: flex; flex-direction: column; width: fit-content;">
   <div style="margin: 10px; width: 30px; height: 30px; border-radius: 50%; background: #ff000040;" id="red"></div>
   <div style="margin: 10px; width: 30px; height: 30px; border-radius: 50%; background: #ffff004f;" id="yellow"></div>
